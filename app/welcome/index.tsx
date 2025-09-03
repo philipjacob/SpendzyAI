@@ -59,7 +59,7 @@ export default function WelcomeScreen() {
           
           <View style={styles.featureItem}>
             <View style={styles.featureIconContainer}>
-              <Ionicons name="trending-up-outline" size={24} color="#2D6BFF" />
+              <Ionicons name="trophy" size={24} color="#2D6BFF" />
             </View>
             <Text style={styles.featureText}>Goal Optimization</Text>
           </View>
@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
+    marginBottom:20,
   },
   background: {
     flex: 1,

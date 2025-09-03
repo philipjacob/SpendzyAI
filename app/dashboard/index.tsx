@@ -71,13 +71,13 @@ export default function DashboardScreen() {
             </View>
             <Text style={styles.actionText}>Send</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.actionButton}>
+          <TouchableOpacity style={styles.actionButton} onPress={()=>navigator.navigate('Receive')}>
             <View style={[styles.actionIcon, { backgroundColor: '#E6FFF9' }]}>
               <Ionicons name="arrow-down" size={20} color="#36D1B7" />
             </View>
             <Text style={styles.actionText}>Receive</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.actionButton}>
+          <TouchableOpacity style={styles.actionButton} onPress={()=>navigator.navigate('PayBills')}>
             <View style={[styles.actionIcon, { backgroundColor: '#FFF2E6' }]}>
               <Ionicons name="card-outline" size={20} color="#FF9F43" />
             </View>
@@ -248,27 +248,27 @@ export default function DashboardScreen() {
 
       {/* Bottom Navigation */}
       <View style={styles.bottomNav}>
-          <TouchableOpacity style={styles.navItem}>
-            <Ionicons name="home-outline" size={24} color="#8E9AAF" />
-            <Text style={styles.navText}>Home</Text>
+          <TouchableOpacity style={[styles.navItem, styles.activeNavItem]}>
+            <Ionicons name="home-outline" size={24} color="#2D6BFF"  onPress={()=>navigator.navigate('Dashboard')}/>
+            <Text style={[styles.navText,styles.activeNavText]}>Home</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.navItem}>
               <Ionicons name="pie-chart-outline" size={24} color="#8E9AAF" onPress={()=>navigator.navigate('Budget')} />
               <Text style={styles.navText}>Budget</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.navItem, styles.activeNavItem]} onPress={()=>navigator.navigate('Transactions')}>
-            <Ionicons name="list" size={24} color="#2D6BFF" />
-            <Text style={[styles.navText, styles.activeNavText]}>Transactions</Text>
+          <TouchableOpacity style={styles.navItem} onPress={()=>navigator.navigate('Transactions')}>
+            <Ionicons name="list" size={24} color="#8E9AAF" />
+            <Text style={styles.navText}>Transactions</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.navItem} onPress={()=>navigator.navigate('Investments')} >
             <Ionicons name="trending-up" size={24} color="#8E9AAF" />
             <Text style={styles.navText}>Investments</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.navItem}>
-            <Ionicons name="trending-up-outline" size={24} color="#8E9AAF" />
+          <TouchableOpacity style={styles.navItem} onPress={()=>navigator.navigate('Goals')}>
+            <Ionicons name="trophy" size={24} color="#8E9AAF" />
             <Text style={styles.navText}>Goals</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.navItem}>
+          <TouchableOpacity style={styles.navItem}  onPress={()=>navigator.navigate('Profile')}>
             <Ionicons name="person-outline" size={24} color="#8E9AAF" />
             <Text style={styles.navText}>Profile</Text>
           </TouchableOpacity>
@@ -281,6 +281,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F7F9FC',
+    marginBottom:20,
   },
   scrollContent: {
     paddingBottom: 80, // Space for bottom nav
@@ -644,6 +645,9 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#8E9AAF',
     marginTop: 4,
+  },
+  activeNavItem: {
+    alignItems: 'center',
   },
   activeNavText: {
     color: '#2D6BFF',

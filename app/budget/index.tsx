@@ -88,7 +88,7 @@ const chartConfig = {
 };
 
 export default function BudgetScreen() {
-  const navigation = useNavigation();
+  const navigator= useNavigation();
   const [selectedMonth, setSelectedMonth] = useState('August');
   
   // Calculate total budget and spent
@@ -242,27 +242,27 @@ export default function BudgetScreen() {
       
       {/* Bottom Navigation */}
         <View style={styles.bottomNav}>
-            <TouchableOpacity style={styles.navItem}>
+            <TouchableOpacity style={styles.navItem} onPress={()=>navigator.navigate('Dashboard')}>
                 <Ionicons name="home-outline" size={24} color="#8E9AAF" />
                 <Text style={styles.navText}>Home</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.navItem}>
-                <Ionicons name="pie-chart-outline" size={24} color="#8E9AAF" onPress={()=>navigator.navigate('Budget')} />
-                <Text style={styles.navText}>Budget</Text>
+            <TouchableOpacity style={[styles.navItem, styles.activeNavItem]}>
+                <Ionicons name="pie-chart-outline" size={24} color="#2D6BFF" onPress={()=>navigator.navigate('Budget')} />
+                <Text style={[styles.navText, styles.activeNavText]}>Budget</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.navItem, styles.activeNavItem]} onPress={()=>navigator.navigate('Transactions')}>
-                <Ionicons name="list" size={24} color="#2D6BFF" />
-                <Text style={[styles.navText, styles.activeNavText]}>Transactions</Text>
+            <TouchableOpacity style={styles.navItem} onPress={()=>navigator.navigate('Transactions')}>
+                <Ionicons name="list" size={24} color="#8E9AAF" />
+                <Text style={styles.navText}>Transactions</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.navItem} onPress={()=>navigator.navigate('Investments')} >
                 <Ionicons name="trending-up" size={24} color="#8E9AAF" />
                 <Text style={styles.navText}>Investments</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.navItem}>
-                <Ionicons name="trending-up-outline" size={24} color="#8E9AAF" />
+            <TouchableOpacity style={styles.navItem} onPress={()=>navigator.navigate('Goals')}>
+                <Ionicons name="trophy" size={24} color="#8E9AAF" />
                 <Text style={styles.navText}>Goals</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.navItem}>
+            <TouchableOpacity style={styles.navItem}  onPress={()=>navigator.navigate('Profile')}>
                 <Ionicons name="person-outline" size={24} color="#8E9AAF" />
                 <Text style={styles.navText}>Profile</Text>
             </TouchableOpacity>
@@ -275,6 +275,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F7F9FC',
+    marginBottom:20,
   },
   header: {
     flexDirection: 'row',

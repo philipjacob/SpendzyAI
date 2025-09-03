@@ -120,7 +120,7 @@ const chartConfig = {
 };
 
 export default function InvestmentsScreen() {
-  const navigation = useNavigation() // Placeholder for navigation prop
+  const navigator = useNavigation() // Placeholder for navigation prop
   const [timePeriod, setTimePeriod] = useState('1M');
   
   const handleTimePeriodChange = (period) => {
@@ -256,17 +256,15 @@ export default function InvestmentsScreen() {
                 </View>
               </View>
             ))}
+            <TouchableOpacity style={styles.addButton} onPress={()=> navigator.navigate('AddInvestment')}>
+              <Ionicons name="add" size={24} color="#FFFFFF" />
+              <Text style={styles.addButtonText}>Add Investment</Text>
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.addButton} onPress={()=> navigation.navigate('AddInvestment')}>
-            <Ionicons name="add" size={24} color="#FFFFFF" />
-            <Text style={styles.addButtonText}>Add Investment</Text>
-          </TouchableOpacity>
         </View>
-        
-        {/* Add Investment Button */}
-        
+      </ScrollView>
         <View style={styles.bottomNav}>
-            <TouchableOpacity style={styles.navItem}>
+            <TouchableOpacity style={styles.navItem}  onPress={()=>navigator.navigate('Dashboard')}>
                 <Ionicons name="home-outline" size={24} color="#8E9AAF" />
                 <Text style={styles.navText}>Home</Text>
             </TouchableOpacity>
@@ -275,24 +273,23 @@ export default function InvestmentsScreen() {
                 <Text style={styles.navText}>Budget</Text>
             </TouchableOpacity>
             
-            <TouchableOpacity style={[styles.navItem, styles.activeNavItem]} onPress={()=>navigator.navigate('Transactions')}>
-                <Ionicons name="list" size={24} color="#2D6BFF" />
-                <Text style={[styles.navText, styles.activeNavText]}>Transactions</Text>
+            <TouchableOpacity style={styles.navItem} onPress={()=>navigator.navigate('Transactions')}>
+                <Ionicons name="list" size={24} color="#8E9AAF" />
+                <Text style={styles.navText}>Transactions</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.navItem} onPress={()=>navigator.navigate('Investments')} >
-                <Ionicons name="trending-up" size={24} color="#8E9AAF" />
-                <Text style={styles.navText}>Investments</Text>
+            <TouchableOpacity style={[styles.navItem,, styles.activeNavItem]} onPress={()=>navigator.navigate('Investments')} >
+                <Ionicons name="trending-up" size={24} color="#2D6BFF" />
+                <Text style={[styles.navText, styles.activeNavText]}>Investments</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.navItem}>
-                <Ionicons name="trending-up-outline" size={24} color="#8E9AAF" />
+            <TouchableOpacity style={styles.navItem} onPress={()=>navigator.navigate('Goals')}>
+                <Ionicons name="trophy" size={24} color="#8E9AAF" />
                 <Text style={styles.navText}>Goals</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.navItem}>
+            <TouchableOpacity style={styles.navItem}  onPress={()=>navigator.navigate('Profile')}>
                 <Ionicons name="person-outline" size={24} color="#8E9AAF" />
                 <Text style={styles.navText}>Profile</Text>
             </TouchableOpacity>
         </View>
-      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -301,6 +298,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F7F9FC',
+    marginBottom:20,
   },
   scrollContent: {
     padding: 20,

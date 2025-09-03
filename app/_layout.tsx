@@ -8,10 +8,13 @@ import AddTransactionScreen from './addtransaction/index';
 import BudgetScreen from './budget/index';
 import DashboardScreen from './dashboard/index';
 import ForgotPasswordScreen from './forgotpassword/index';
+import GoalsScreen from './goals/index';
 import InvestmentsScreen from './investment/index';
 import LoginScreen from './login/index';
 import OnboardingScreen from './onboarding/index';
 import PayBillsScreen from './paybills/index';
+import ProfileSettingsScreen from './profile/index';
+import ReceiveMoneyScreen from './receive';
 import ResetPasswordScreen from './resetpassword/index';
 import SendMoneyScreen from './send';
 import SignupScreen from './signup/index';
@@ -19,6 +22,7 @@ import TransactionsScreen from './transactions/index';
 import VerificationCodeScreen from './verifyotp/index';
 import WealthManagementScreen from './wealth/index';
 import WelcomeScreen from './welcome/index';
+
 
 export default function RootLayout() {
   const Stack = createStackNavigator();
@@ -49,6 +53,10 @@ export default function RootLayout() {
       <Stack.Screen name="Transactions" component={TransactionsScreen} />
       <Stack.Screen name="AddTransaction" component={AddTransactionScreen} />
       <Stack.Screen name="Budget" component={BudgetScreen} />
+      <Stack.Screen name="Goals" component={GoalsScreen} />
+      <Stack.Screen name="Receive" component={ReceiveMoneyScreen} />
+      <Stack.Screen name="Profile" component={ProfileSettingsScreen} />
+           
     </Stack.Navigator>
   );
 }

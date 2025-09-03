@@ -32,7 +32,7 @@ const paymentMethods = [
 ];
 
 export default function SendMoneyScreen(){
-  const navigation= useNavigation();
+  const navigator= useNavigation();
   const [amount, setAmount] = useState('');
   const [recipient, setRecipient] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -87,7 +87,7 @@ export default function SendMoneyScreen(){
     // In a real app, you would call your API here
     
     // Navigate back or to confirmation screen
-    navigation.goBack();
+    navigator.goBack();
   };
 
   return (
@@ -101,7 +101,7 @@ export default function SendMoneyScreen(){
           <View style={styles.header}>
             <TouchableOpacity 
               style={styles.backButton}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigator.goBack()}
             >
               <Ionicons name="arrow-back" size={24} color="#1A2138" />
             </TouchableOpacity>
@@ -252,7 +252,7 @@ export default function SendMoneyScreen(){
         </ScrollView>
       </KeyboardAvoidingView>
       <View style={styles.bottomNav}>
-        <TouchableOpacity style={styles.navItem}>
+        <TouchableOpacity style={styles.navItem}  onPress={()=>navigator.navigate('Dashboard')}>
             <Ionicons name="home-outline" size={24} color="#8E9AAF" />
             <Text style={styles.navText}>Home</Text>
         </TouchableOpacity>
@@ -269,11 +269,11 @@ export default function SendMoneyScreen(){
             <Ionicons name="trending-up" size={24} color="#8E9AAF" />
             <Text style={styles.navText}>Investments</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-            <Ionicons name="trending-up-outline" size={24} color="#8E9AAF" />
+        <TouchableOpacity style={styles.navItem} onPress={()=>navigator.navigate('Goals')}>
+            <Ionicons name="trophy" size={24} color="#8E9AAF" />
             <Text style={styles.navText}>Goals</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
+        <TouchableOpacity style={styles.navItem}  onPress={()=>navigator.navigate('Profile')}>
             <Ionicons name="person-outline" size={24} color="#8E9AAF" />
             <Text style={styles.navText}>Profile</Text>
         </TouchableOpacity>
@@ -286,6 +286,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F7F9FC',
+    marginBottom:20,
   },
   keyboardAvoid: {
     flex: 1,

@@ -14,6 +14,7 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 // Sample data for categories
 const categories = [
@@ -325,6 +326,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F7F9FC',
+    marginBottom:20,
   },
   keyboardAvoid: {
     flex: 1,
@@ -611,5 +613,39 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     color: '#FFFFFF',
+  },
+  bottomNav: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: Colors.cardBackground,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    paddingVertical: 10,
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: -2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  navItem: {
+    alignItems: 'center',
+    padding: 5,
+  },
+  navText: {
+    fontSize: 12,
+    color: Colors.textSecondary,
+    marginTop: 4,
+  },
+  activeNavItem: {
+    alignItems: 'center',
+  },
+  activeNavText: {
+    color: '#2D6BFF',
+    fontWeight: '600',
   },
 });

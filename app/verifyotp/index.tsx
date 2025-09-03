@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 
 export default function VerificationCodeScreen() {
-  const navigation = useNavigation();
+  const navigator = useNavigation();
   const route = useRoute();
   const { email }:any = route.params || { email: 'your.email@example.com' };
   const [code, setCode] = useState(['', '', '', '', '', '']);
@@ -84,7 +84,7 @@ export default function VerificationCodeScreen() {
     setTimeout(() => {
       setIsVerifying(false);
       // Navigate to reset password or next screen
-      navigation.navigate('Reset');
+      navigator.navigate('Reset');
     }, 1500);
   };
   
@@ -206,6 +206,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
+    marginBottom:20,
   },
   keyboardAvoid: {
     flex: 1,

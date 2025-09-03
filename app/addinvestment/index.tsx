@@ -34,7 +34,7 @@ const trendingInvestments = [
 ];
 
 export default function AddInvestmentScreen() {
-  const navigation = useNavigation();
+  const navigator = useNavigation();
   const [selectedType, setSelectedType] = useState('stocks');
   const [searchQuery, setSearchQuery] = useState('');
   const [investmentName, setInvestmentName] = useState('');
@@ -86,7 +86,7 @@ export default function AddInvestmentScreen() {
     
     // Navigate back or to confirmation screen
     alert('Investment added successfully!');
-    navigation.goBack();
+    navigator.goBack();
   };
 
   return (
@@ -314,20 +314,19 @@ export default function AddInvestmentScreen() {
                   </Text>
                 </View>
               </TouchableOpacity>
+              
             ))}
+            <TouchableOpacity 
+              style={styles.addButton}
+              onPress={handleAddInvestment}>
+              <Text style={styles.addButtonText}>Add Investment</Text>
+            </TouchableOpacity>
           </View>
           
-          {/* Add Investment Button */}
-          <TouchableOpacity 
-            style={styles.addButton}
-            onPress={handleAddInvestment}
-          >
-            <Text style={styles.addButtonText}>Add Investment</Text>
-          </TouchableOpacity>
         </ScrollView>
       </KeyboardAvoidingView>
       <View style={styles.bottomNav}>
-            <TouchableOpacity style={styles.navItem}>
+            <TouchableOpacity style={styles.navItem} onPress={()=>navigator.navigate('Dashboard')}>
                 <Ionicons name="home-outline" size={24} color="#8E9AAF" />
                 <Text style={styles.navText}>Home</Text>
             </TouchableOpacity>
@@ -336,19 +335,19 @@ export default function AddInvestmentScreen() {
                 <Text style={styles.navText}>Budget</Text>
             </TouchableOpacity>
             
-            <TouchableOpacity style={[styles.navItem, styles.activeNavItem]} onPress={()=>navigator.navigate('Transactions')}>
-                <Ionicons name="list" size={24} color="#2D6BFF" />
-                <Text style={[styles.navText, styles.activeNavText]}>Transactions</Text>
+            <TouchableOpacity style={styles.navItem} onPress={()=>navigator.navigate('Transactions')}>
+                <Ionicons name="list" size={24} color="#8E9AAF"  />
+                <Text style={styles.navText}>Transactions</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.navItem} onPress={()=>navigator.navigate('Investments')} >
-                <Ionicons name="trending-up" size={24} color="#8E9AAF" />
-                <Text style={styles.navText}>Investments</Text>
+            <TouchableOpacity style={[styles.navItem,styles.activeNavItem]} onPress={()=>navigator.navigate('Investments')} >
+                <Ionicons name="trending-up" size={24} color="#2D6BFF" />
+                <Text style={[styles.navText, styles.activeNavText]}>Investments</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.navItem}>
-                <Ionicons name="trending-up-outline" size={24} color="#8E9AAF" />
+            <TouchableOpacity style={styles.navItem} onPress={()=>navigator.navigate('Goals')}>
+                <Ionicons name="trophy" size={24} color="#8E9AAF" />
                 <Text style={styles.navText}>Goals</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.navItem}>
+            <TouchableOpacity style={styles.navItem}  onPress={()=>navigator.navigate('Profile')}>
                 <Ionicons name="person-outline" size={24} color="#8E9AAF" />
                 <Text style={styles.navText}>Profile</Text>
             </TouchableOpacity>
@@ -361,6 +360,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F7F9FC',
+    marginBottom:20,
   },
   keyboardAvoid: {
     flex: 1,
@@ -688,13 +688,13 @@ const styles = StyleSheet.create({
   navItem: {
     alignItems: 'center',
   },
-  activeNavItem: {
-    alignItems: 'center',
-  },
   navText: {
     fontSize: 12,
     color: '#8E9AAF',
     marginTop: 4,
+  },
+  activeNavItem: {
+    alignItems: 'center',
   },
   activeNavText: {
     color: '#2D6BFF',

@@ -81,7 +81,10 @@ export default function OnboardingScreen(){
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" />
-      
+      <Image
+            source={require('../../assets/images/splash-icon.png')}
+            style={{ display: 'none' }}
+      />
       <View style={styles.header}>
         <Image
           source={require('../../assets/images/SpendzyLogo.png')}
@@ -134,6 +137,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F7F9FC',
+    marginBottom:20,
   },
   header: {
     flexDirection: 'row',

@@ -92,7 +92,7 @@ const categories = [
 ];
 
 export default function PayBillsScreen() {
-  const navigation= useNavigation();
+  const navigator= useNavigation();
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   
@@ -121,7 +121,7 @@ export default function PayBillsScreen() {
         <View style={styles.header}>
           <TouchableOpacity 
             style={styles.backButton}
-            onPress={() => navigation.goBack()}
+            onPress={() => navigator.goBack()}
           >
             <Ionicons name="arrow-back" size={24} color="#1A2138" />
           </TouchableOpacity>
@@ -258,8 +258,6 @@ export default function PayBillsScreen() {
               </View>
             </View>
           ))}
-        </View>
-        
         {/* Add New Bill Button */}
         <TouchableOpacity 
           style={styles.addBillButton}
@@ -268,9 +266,10 @@ export default function PayBillsScreen() {
           <Ionicons name="add" size={24} color="#FFFFFF" />
           <Text style={styles.addBillText}>Add New Bill</Text>
         </TouchableOpacity>
+        </View>
       </ScrollView>
       <View style={styles.bottomNav}>
-          <TouchableOpacity style={styles.navItem}>
+          <TouchableOpacity style={styles.navItem}  onPress={()=>navigator.navigate('Dashboard')}>
               <Ionicons name="home-outline" size={24} color="#8E9AAF" />
               <Text style={styles.navText}>Home</Text>
           </TouchableOpacity>
@@ -287,11 +286,11 @@ export default function PayBillsScreen() {
               <Ionicons name="trending-up" size={24} color="#8E9AAF" />
               <Text style={styles.navText}>Investments</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.navItem}>
-              <Ionicons name="trending-up-outline" size={24} color="#8E9AAF" />
+          <TouchableOpacity style={styles.navItem} onPress={()=>navigator.navigate('Goals')}>
+              <Ionicons name="trophy" size={24} color="#8E9AAF" />
               <Text style={styles.navText}>Goals</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.navItem}>
+          <TouchableOpacity style={styles.navItem}  onPress={()=>navigator.navigate('Profile')}>
               <Ionicons name="person-outline" size={24} color="#8E9AAF" />
               <Text style={styles.navText}>Profile</Text>
           </TouchableOpacity>
@@ -304,6 +303,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F7F9FC',
+    marginBottom:20,
   },
   scrollContent: {
     padding: 20,

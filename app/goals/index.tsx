@@ -2,11 +2,22 @@ import { FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-ico
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { Dimensions, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { ProgressCircle } from 'react-native-svg-charts'; // You might need to install this: npm install react-native-svg react-native-svg-charts
+import { ProgressChart } from 'react-native-chart-kit'; // You might need to install this: npm install react-native-svg react-native-svg-charts
 import AddGoalModal from './addgoal';
 import AdjustGoalModal from './adjustgoal';
 
 const { width } = Dimensions.get('window');
+
+const chartConfig = {
+  backgroundGradientFrom: "#1E2923",
+  backgroundGradientFromOpacity: 0,
+  backgroundGradientTo: "#08130D",
+  backgroundGradientToOpacity: 0.5,
+  color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+  strokeWidth: 2,
+  barPercentage: 0.5,
+  useShadowColorFromDataset: false 
+};
 
 const Colors = {
   primary: '#2D6BFF',
@@ -98,7 +109,10 @@ export default function GoalsScreen() {
         return <Ionicons name="cash-outline" size={24} color={Colors.primary} />;
     }
   };
-
+  const data = {
+    labels: ["home", "car", "vacation","education"], // optional
+    data: [0.6, 0.75, 0.6, 0.8]
+  };
   const AIRecommendationCard = () => (
     <View style={styles.aiRecommendationCard}>
       <MaterialCommunityIcons name="lightbulb-on" size={28} color={Colors.secondary} />
@@ -133,12 +147,14 @@ export default function GoalsScreen() {
         <View style={styles.overviewSection}>
           <Text style={styles.sectionTitle}>Overview</Text>
           <View style={styles.progressCircleContainer}>
-            <ProgressCircle
-              style={{ height: 150, width: 150 }}
-              progress={totalProgress}
-              progressColor={Colors.secondary}
-              backgroundColor={Colors.borderColor}
-              strokeWidth={10}
+            <ProgressChart
+              data={data}
+              width={400}
+              height={300}
+              strokeWidth={16}
+              radius={32}
+              chartConfig={chartConfig}
+              hideLegend={false}
             />
             <View style={styles.progressTextOverlay}>
               <Text style={styles.progressPercentage}>{(totalProgress * 100).toFixed(0)}%</Text>
@@ -283,8 +299,8 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   progressCircleContainer: {
-    width: 150,
-    height: 150,
+    width: 400,
+    height: 300,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 10,

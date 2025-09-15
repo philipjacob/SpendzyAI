@@ -14,7 +14,6 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 // Sample data for categories
 const categories = [
@@ -322,6 +321,16 @@ export default function AddTransactionScreen() {
     </SafeAreaView>
   );
 };
+const ColorsCodes = {
+  primary: '#2D6BFF',
+  secondary: '#36D1B7',
+  background: '#F0F2F5',
+  cardBackground: '#FFFFFF',
+  textPrimary: '#333333',
+  textSecondary: '#666666',
+  borderColor: '#E0E0E0',
+  red: '#FF6B6B',
+};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -618,7 +627,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: Colors.cardBackground,
+    backgroundColor: ColorsCodes.cardBackground,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     paddingVertical: 10,
@@ -638,7 +647,7 @@ const styles = StyleSheet.create({
   },
   navText: {
     fontSize: 12,
-    color: Colors.textSecondary,
+    color: ColorsCodes.textSecondary,
     marginTop: 4,
   },
   activeNavItem: {

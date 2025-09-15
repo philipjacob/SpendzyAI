@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { useFonts } from 'expo-font';
 import React from 'react';
 import 'react-native-reanimated';
+import App from '../app';
 import AddInvestmentScreen from './addinvestment/index';
 import AddTransactionScreen from './addtransaction/index';
 import BudgetScreen from './budget/index';
@@ -18,11 +19,11 @@ import ReceiveMoneyScreen from './receive';
 import ResetPasswordScreen from './resetpassword/index';
 import SendMoneyScreen from './send';
 import SignupScreen from './signup/index';
+import SubscriptionScreen from './subscription/index';
 import TransactionsScreen from './transactions/index';
 import VerificationCodeScreen from './verifyotp/index';
 import WealthManagementScreen from './wealth/index';
 import WelcomeScreen from './welcome/index';
-
 
 export default function RootLayout() {
   const Stack = createStackNavigator();
@@ -36,7 +37,8 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator initialRouteName="App" screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="App" component={App} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Signup" component={SignupScreen} />
       <Stack.Screen name="Forgot" component={ForgotPasswordScreen} />
@@ -56,7 +58,7 @@ export default function RootLayout() {
       <Stack.Screen name="Goals" component={GoalsScreen} />
       <Stack.Screen name="Receive" component={ReceiveMoneyScreen} />
       <Stack.Screen name="Profile" component={ProfileSettingsScreen} />
-           
+      <Stack.Screen name="Subscription" component={SubscriptionScreen} />
     </Stack.Navigator>
   );
 }
